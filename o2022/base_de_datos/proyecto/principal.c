@@ -3,6 +3,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+//Hello World
+
 extern void menuAdministrador();
 extern void menuSolicitante(int cuenta);
 
