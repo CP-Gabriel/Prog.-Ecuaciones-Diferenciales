@@ -1,0 +1,6 @@
+45678	Fernandez Perez Alberto	9.5	electronica
+34256	Leora Hernandez Laura	8.7	diseno
+12666	Antonio Lopez Perez	10.0	electronica
+78785	Ana Abad Garcia	7.6	arquitectura
+56342	Jose Sosa Romero	9	diseno
+98765	Lopez Lopez Ernesto	9.0	arquitectura

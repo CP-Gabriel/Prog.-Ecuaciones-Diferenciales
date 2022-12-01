@@ -1,0 +1,8 @@
+35	bulldog	jose	7	19.00
+45	doverman	luke	5	15.00
+36	cocker	olfatin	10	8.00
+25	cocker	pepin	8	18.00
+30	bulldog	perro	4	12.00
+23	dalmata	pipo	1	23.00
+21	pug	pulguita	3	10.00
+20	setter	tito	2	2.50

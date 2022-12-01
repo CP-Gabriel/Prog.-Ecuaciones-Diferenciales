@@ -1,0 +1,5 @@
+Ana López	20393	9.8
+Luis Alvares	78990	7.6
+Eduardo Fraga	89789	5.0
+Pepe Perez	22303	9.78
+Juan Alvares	24456	9.81

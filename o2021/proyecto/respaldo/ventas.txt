@@ -1,0 +1,34 @@
+
+VENTA 1
+
+USUARIO:
+Nombre: q q q
+Correo eletrónico: q
+
+DETALLES:
+Costo: $900	Peso: 11.000kgms
+1.Manubrio: estándar
+2.Luces: pilas
+3.Cuadro: acero
+4.Asiento: estándar
+5.Sin rack trasero
+6.Llantas: estándar
+7.1 velocidades
+8.Color: blanco
+
+VENTA 2
+
+USUARIO:
+Nombre: in rack trasero stándar 
+Correo eletrónico: memo2mac
+
+DETALLES:
+Costo: $2455	Peso: 8.655kgms
+1.Manubrio: estándar
+2.Luces: pilas
+3.Cuadro: acero
+4.Asiento: estándar
+5.Sin rack trasero
+6.Llantas: estándar
+7.1 velocidades
+8.Color: azul

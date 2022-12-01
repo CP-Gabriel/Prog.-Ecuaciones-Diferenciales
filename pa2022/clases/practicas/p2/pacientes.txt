@@ -1,0 +1,3 @@
+Fernando	Acosta	3320	n	
+Francisco	Pérez	2910	s
+Juan	Escutia	2841	s

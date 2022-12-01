@@ -1,0 +1,24 @@
+
+USUARIO 1
+Nombre: q q q
+Clave de elector: q
+Correo eletrónico: q
+Dirección: calle q, # , Col. , Alc. q, Estado q
+
+USUARIO 2
+Nombre: in rack trasero stándar 
+Clave de elector: 89
+Correo eletrónico: memo2mac
+Dirección: calle reforma 80, # 2, Col. del valle, Alc. bj, Estado cdmx
+
+USUARIO 1
+Nombre: guillermo gomez abascal
+Clave de elector: 89
+Correo eletrónico: memo2mac
+Dirección: calle reforma 80, # , Col. , Alc. bj, Estado cdmx
+
+USUARIO 1
+Nombre: s s s
+Clave de elector: s
+Correo eletrónico: s
+Dirección: calle s, # , Col. , Alc. s, Estado s

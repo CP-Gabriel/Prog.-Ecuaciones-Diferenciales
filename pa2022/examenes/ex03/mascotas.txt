@@ -1,0 +1,9 @@
+20	setter	tito	2	2.5
+23	dalmata	pipo	1	23
+45	doverman	luke	5	15
+21	pug	pulguita	3	10
+20	mestizo	pepe	6	12
+35	bulldog	jose	7	19
+25	cocker	pepin	8	18
+30	bulldog	perro	4	12
+36	cocker	olfatin	10	8

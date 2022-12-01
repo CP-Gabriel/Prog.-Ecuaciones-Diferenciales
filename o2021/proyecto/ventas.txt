@@ -1,0 +1,18 @@
+
+VENTA 1
+
+Usuario 1
+Nombre: gabriel coronadp placeres
+Correo eletrónico: coronadogabriel20@gmail.com
+
+DETALLES:
+
+Costo: $2400	Peso: 8.655kgms
+1.Manubrio: estándar
+2.Luces: pilas
+3.Cuadro: acero
+4.Asiento: estándar
+5.Sin rack trasero
+6.Llantas: estándar
+7.1 velocidades
+8.Color: blanco

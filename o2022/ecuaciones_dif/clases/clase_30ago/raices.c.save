@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <math.h>
+
+#define F(t)(pow(t,2)-7)
+
+float df(float ta, float h)
+{
+        float t = ta + h;
+        return (F(t) - F(ta))/h;
+}
+
+float resultados(int min, int d, int derv)
+{
+	float resultado = min - (d/derv);
+	return resultado;
+}
+
+int main()
+{
+//	float arr[6];
+	float h = 0.01f;
+	float a[6] = {0,1,2,3,4,5};
+	int b, min, max;
+	int resultado, c, d;
+	for (int n=0; n <6; n++)
+	{
+		b = a[n];
+		resultado = F(b);
+		if (resultado < 0)
+		{
+			d = resultado;
+			min = n;
+		}
+		if (resultado > 0)
+                {
+			c = resultado;
+                        max = n;
+			break;
+                }
+		printf ("\nRESULTADO: %i", resultado);
+	}
+	printf ("\nMIN: %i\tMAX: %i", min, max);
+//	printf ("\nRESULTADO MIN: %i", d);
+//	printf ("\nRESULTADO MAX: %i", c);
+	int derv = df(min,h);
+	printf ("\nDERIVADA: %i", derv);
+	float e = resultados(min, d, derv);
+	printf ("\nRESULTADO FINAL %f", e);
+	printf ("\n");*/
+	printf ("\n");
+	return 0;
+}

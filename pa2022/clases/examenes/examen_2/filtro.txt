@@ -1,0 +1,8 @@
+
+Registros de personas que miden menos de 1.80 mts.
+ana	70.90
+pedro	85.40
+
+Registros de personas que pesan más de 105.40 kg.
+jose	105.50
+luis	110.50

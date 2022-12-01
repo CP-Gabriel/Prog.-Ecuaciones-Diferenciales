@@ -1,0 +1,681 @@
+/*
+* @file: compras.c
+* @brief: Este archivo almacena las funciones que se utilizan configurar la bicicleta y guardar las ventas.
+* @authors: Gabriel Coronado/Segio Esquivel/ Sebastian Alanis.
+* @date: 31/11/21
+*/
+
+#include "misDef.h"
+
+/*
+* @brief: Esta funcion permite configurar la bicicleta.
+* @authors: Gabriel Coronado/Segio Esquivel/ Sebastian Alanis.
+* @date: 31/11/21
+* @param bicicleta es un struct que almacena las los datos de la bicicleta del usuario.
+* @para, *datos es un apuntador que almacena 1 si los la direccion del usuario esta completa.
+* @param *confirmar  es un acomulador que almacena la confirmacion de la compra.
+* @param x es un acomulador que se va sumando cada vez que ingresa un nuevo usuario.
+* @return *confirmar que es un acomulador que almacena la confirmacion de la compra.
+*/
+
+extern int configurarBici(struct bike bicicleta[], int *datos, int *confirmar, int x)
+{
+	int opcion, repetir, modif, continuar;
+	int i;
+	int catamanu, cataluc, catacua, cataasie, catarack, catallan, catavel, catacol;
+	bicicleta[0].costo= 900;
+	bicicleta[0].peso= 11000;
+	int manubrio=0;
+	int luces=0;
+	int cuadro=0;
+	int asiento=0;
+	int rack=0;
+	int llantas=0;
+	int velocidad=0;
+	int color=0;
+	bicicleta[0].costo= 900;
+        bicicleta[0].peso= 11000;
+	strcpy(bicicleta[0].manubrio,"estándar");
+	strcpy(bicicleta[0].luces,"pilas");
+	strcpy(bicicleta[0].cuadro,"acero");
+	strcpy(bicicleta[0].asiento,"estándar");
+	strcpy(bicicleta[0].rack,"Sin rack trasero");
+	strcpy(bicicleta[0].llantas,"estándar");
+	bicicleta[0].velocidad= 1;
+	strcpy(bicicleta[0].color,"blanco");
+	int inicio=0;
+	for (i=x; i<(x+1); i++)
+	{
+		bicicleta[i].costo= 900;
+	        bicicleta[i].peso= 11000;
+		strcpy(bicicleta[i].manubrio,"estándar");
+	        strcpy(bicicleta[i].luces,"pilas");
+	        strcpy(bicicleta[i].cuadro,"acero");
+	        strcpy(bicicleta[i].asiento,"estándar");
+	        strcpy(bicicleta[i].rack,"Sin rack trasero");
+	        strcpy(bicicleta[i].llantas,"estándar");
+		bicicleta[i].velocidad= 1;
+	        strcpy(bicicleta[i].color,"blanco");
+		if (inicio==0)
+		{
+			system ("clear");
+	       	        printf ("\nVENTA DE BICICLETAS\n");
+	        	printf ("\nCONFIGURACIÓN DE BICICLETA\n");
+			if (*datos==1)
+			{
+				printf ("\nSus datos se regitraron correctamente.\nEstá registrado.\n");
+			}
+	        	printf ("\nCONFIGURACIÓN BÁSICA\n");
+			printf ("\nCosto: $%.0f\tPeso: %.0fkgms", bicicleta[0].costo, (bicicleta[0].peso/1000));
+			printf ("\n1.Manubrio: %s", bicicleta[0].manubrio);
+			printf ("\n2.Luces: %s", bicicleta[0].luces);
+			printf ("\n3.Cuadro: %s", bicicleta[0].cuadro);
+			printf ("\n4.Asiento: %s", bicicleta[0].asiento);
+			printf ("\n5.%s", bicicleta[0].rack);
+			printf ("\n6.Llantas: %s", bicicleta[0].llantas);
+			printf ("\n7.%i velocidades", bicicleta[0].velocidad);
+			printf ("\n8.Color: %s\n", bicicleta[0].color);
+                        printf ("\n1.SI         0.NO");
+                        printf ("\nDesea modificar algo: ");
+                        scanf (" %i", &continuar);
+                        if (continuar==0)
+                        {
+				printf ("\n1.SI         0.NO");
+	                        printf ("\nDesea confirmar la compra: ");
+				scanf (" %i", confirmar);
+				if (*confirmar==1)
+				{
+                                	printf ("\nMUCHAS GRACIAS POR SU COMPRA.");
+				}
+				else
+				{
+					printf ("\nMUCHAS GRACIAS POR HABER VISITADO NUESTRA TIENDA.");
+				}
+                        }
+                        else
+                        {
+				inicio=1;
+				modif=0;
+			}
+		}
+		if (inicio>0)
+		{
+			do
+			{
+				if (modif==1)
+				{
+					system ("clear");
+			                repetir=0;
+			                printf ("\nVENTA DE BICICLETAS\n");
+			                printf ("\nCONFIGURACIÓN DE BICICLETA\n");
+					printf ("\nCONFIGURACIÓN MODIFICADA\n");
+			                printf ("\nCosto: $%.0f		Peso: %.3fkgms", bicicleta[i].costo, (bicicleta[i].peso/1000));
+					if (manubrio==0)//manubrio
+					{
+			                	printf ("\n1.Manubrio: %s", bicicleta[0].manubrio);
+					}
+					if (manubrio>0)
+        	                        {
+	                                        printf ("\n1.Manubrio: %s", bicicleta[i].manubrio);
+	                                }//manubrio
+					if (luces==0)//luces
+				        {
+					        printf ("\n2.Luces: %s", bicicleta[0].luces);
+					}
+					if (luces>0)
+	                                {
+	                                        printf ("\n2.Luces: %s", bicicleta[i].luces);
+	                                }//luces
+					if (cuadro==0)//cuadro
+					{
+			                	printf ("\n3.Cuadro: %s", bicicleta[0].cuadro);
+					}
+					if (cuadro==1)
+	                                {
+	                                        printf ("\n3.Cuadro: %s", bicicleta[i].cuadro);
+	                                }//cuadro
+					if (asiento==0)//asiento
+					{
+			                	printf ("\n4.Asiento: %s", bicicleta[0].asiento);
+					}
+					if (asiento==1)
+	                                {
+	                                        printf ("\n4.Asiento: %s", bicicleta[i].asiento);
+	                                }//asiento
+					if (rack==0)//rack
+					{
+			                	printf ("\n5.%s", bicicleta[0].rack);
+					}
+					if (rack==1)
+	                                {
+	                                        printf ("\n5.%s", bicicleta[i].rack);
+	                                }//rack
+					if (llantas==0)//llantas
+	                                {
+			                	printf ("\n6.Llantas: %s", bicicleta[0].llantas);
+					}
+					if (llantas==1)
+	                                {
+	                                        printf ("\n6.Llantas: %s", bicicleta[i].llantas);
+	                                }//llantas
+					if (velocidad==0)//velocidad
+	                                {
+			                	printf ("\n7.%i velocidades", bicicleta[0].velocidad);
+					}
+					if (velocidad==1)
+        	                        {
+	                                        printf ("\n7.%i velocidades", bicicleta[i].velocidad);
+	                                }//velocidad
+					if (color==0)//color
+	                                {
+			                	printf ("\n8.Color: %s\n", bicicleta[0].color);
+					}
+					if (color==1)
+	                                {
+        	                                printf ("\n8.Color: %s\n", bicicleta[i].color);
+	                                }//color
+					printf ("\n1.SI         0.NO");
+                        		printf ("\nDesea modificar algo: ");
+		                        scanf (" %i", &continuar);
+		                       	if (continuar==0)
+		                        {
+		                                printf ("\n1.SI         0.NO");
+		                                printf ("\nDesea confirmar la compra: ");
+		                                scanf (" %i", confirmar);
+		                                if (*confirmar==1)
+		                                {
+		                                        printf ("\nMUCHAS GRACIAS POR SU COMPRA.");
+		                                }
+		                                else
+		                                {
+		                                        printf ("\nMUCHAS GRACIAS POR HABER VISITADO NUESTRA PÁGINA WEB.");
+		                                }
+		                        }
+				}
+				if (continuar==1)
+				{
+					printf ("\nIngrese el número de la opción que desea modificar: ");
+					scanf (" %i", &opcion);
+					if (opcion==1)//manubrio
+					{
+						system ("clear");
+						repetir=1;
+						modif=1;
+						manubrio=1;
+						if (manubrio==1)
+        	                                {
+        	                                        if (catamanu==2)
+	                                                {
+	                                                        bicicleta[i].peso= bicicleta[i].peso - 200;
+								bicicleta[i].costo= bicicleta[i].costo - 150;
+	                                                }
+							if (catamanu==3)
+	                                                {
+								bicicleta[i].peso= bicicleta[i].peso + 100;
+	                                                        bicicleta[i].costo= bicicleta[i].costo - 207;
+	                                                }
+	                                        }
+						printf ("\nVENTA DE BICICLETAS\n");
+			        	        printf ("\nCONFIGURACIÓN DE BICICLETA\n");
+						printf ("\nCONFIGURAR MANUBRIO\n");
+						printf ("\nCATÁLOGO\n");
+						printf ("\nMANUBRIO		PESO		PRECIO\n");
+						printf ("\n1.Estándar		0		0");
+						printf ("\n2.Urbano		+200grms	+$150");
+						printf ("\n3.Deportivo		-100grms	+$207\n");
+						printf ("\nIngrese el número de la opción que desea cambiar: ");
+						scanf (" %i", &catamanu);
+						if (catamanu==1)
+						{
+							strcpy(bicicleta[i].manubrio,"estándar");
+						}
+						if (catamanu==2)
+	                                        {
+	                                                strcpy(bicicleta[i].manubrio,"urbano");
+	                                                bicicleta[i].peso = bicicleta[i].peso + 200;
+							bicicleta[i].costo = bicicleta[i].costo + 150;
+	                                        }
+						if (catamanu==3)
+        	                                {
+	                                                strcpy(bicicleta[i].manubrio,"estándar");
+							bicicleta[i].peso = bicicleta[i].peso - 100;
+	                                                bicicleta[i].costo = bicicleta[i].costo + 207;
+	                                        }
+					}//manubrio
+					if (opcion==2)//luces
+	                                {
+        	                                system ("clear");
+	                                        repetir=1;
+	                                        modif=1;
+	                                        luces=1;
+						if (luces==1)
+	                                        {
+	                                                if (cataluc==2)
+	                                                {
+	                                                        bicicleta[i].peso= bicicleta[i].peso + 50;
+	                                                        bicicleta[i].costo= bicicleta[i].costo - 92;
+	                                                }
+	                                                if (cataluc==3)
+	                                                {
+	                                                        bicicleta[i].peso= bicicleta[i].peso - 250;
+	                                                        bicicleta[i].costo= bicicleta[i].costo - 152;
+	                                                }
+	                                        }
+	                                        printf ("\nVENTA DE BICICLETAS\n");
+	                                        printf ("\nCONFIGURACIÓN DE BICICLETA\n");
+	                                        printf ("\nCONFIGURAR LUCES\n");
+	                                        printf ("\nCATÁLOGO\n");
+	                                        printf ("\nLUCES			PESO		PRECIO\n");
+	                                        printf ("\n1.Pilas			0               0");
+        	                                printf ("\n2.Cargables-usb		-50grms        	+$92");
+	                                        printf ("\n3.Dínamo		+250grms        +$152\n");
+	                                        printf ("\nIngrese el número de la opción que desea cambiar: ");
+	                                        scanf (" %i", &cataluc);
+						if (cataluc==1)
+	                                        {
+        	                                        strcpy(bicicleta[i].luces,"pilas");
+	                                        }
+	                                        if (cataluc==2)
+	                                        {
+	                                                strcpy(bicicleta[i].luces,"cargables-usb");
+	                                                bicicleta[i].peso = bicicleta[i].peso - 50;
+	                                                bicicleta[i].costo = bicicleta[i].costo + 92;
+	                                        }
+						if (cataluc==3)
+	                                        {
+	                                                strcpy(bicicleta[1].manubrio,"dínamo");
+	                                                bicicleta[i].peso = bicicleta[i].peso + 250;
+	                                                bicicleta[i].costo = bicicleta[i].costo + 152;
+	                                        }
+	                                }//luces
+					if (opcion==3)//cuadro
+	                                {
+	                                        system ("clear");
+	                                        repetir=1;
+	                                        modif=1;
+	                                        cuadro++;
+	                                        if (cuadro>1)
+	                                        {
+	                                                if (catacua==2)
+	                                                {
+	                                                        bicicleta[i].peso= bicicleta[i].peso + 900;
+        	                                                bicicleta[i].costo= bicicleta[i].costo - 690;
+	                                                }
+	                                                if (catacua==3)
+	                                                {
+	                                                        bicicleta[i].peso= bicicleta[i].peso + 2345;
+        	                                                bicicleta[i].costo= bicicleta[i].costo - 1500;
+	                                                }
+	                                        }
+						printf ("\nVENTA DE BICICLETAS\n");
+	                                        printf ("\nCONFIGURACIÓN DE BICICLETA\n");
+	                                        printf ("\nCONFIGURAR CUADRO\n");
+        	                                printf ("\nCATÁLOGO\n");
+	                                        printf ("\nCUADRO			PESO		PRECIO\n");
+        	                                printf ("\n1.Acero			0		0");
+	                                        printf ("\n2.Acero-aluminio	-900grms	+$690");
+       		                                printf ("\n3.Titanio		-2,345grms	+$1,500\n");
+        	                                printf ("\nIngrese el número de la opción que desea cambiar: ");
+	                                        scanf (" %i", &catacua);
+	                                        if (catacua==1)
+	                                        {
+        	                                        strcpy(bicicleta[i].luces,"acero");
+	                                        }
+	                                        if (catacua==2)
+	                                        {
+	                                                strcpy(bicicleta[i].luces,"acero-aluminio");
+	                                                bicicleta[i].peso = bicicleta[i].peso - 900;
+        	                                        bicicleta[i].costo = bicicleta[i].costo + 690;
+	                                        }
+						if (catacua==3)
+	                                        {
+	                                                strcpy(bicicleta[1].cuadro,"titanio");
+        	                                        bicicleta[i].peso = bicicleta[i].peso - 2345;
+	                                                bicicleta[i].costo = bicicleta[i].costo + 1500;
+	       	                                }
+	                                }//cuadro
+                                        if (opcion==4)//asiento
+                                        {
+                                                system ("clear");
+                                                repetir=1;
+                                                modif=1;
+                                                asiento=1;
+                                                if (asiento==1)
+                                                {
+                                                        if (cataasie==2)
+                                                        {
+                                                                bicicleta[i].peso= bicicleta[i].peso + 100;
+                                                                bicicleta[i].costo= bicicleta[i].costo - 270;
+                                                        }
+                                                }
+                                                printf ("\nVENTA DE BICICLETAS\n");
+                                                printf ("\nCONFIGURACIÓN DE BICICLETA\n");
+                                                printf ("\nCONFIGURAR ASIENTO\n");
+                                                printf ("\nCATÁLOGO\n");
+                                                printf ("\nASIENTO		PESO		PRECIO\n");
+                                                printf ("\n1.Estándar	0		0");
+                                                printf ("\n2.Deportivo	-100grms	+$270\n");
+                                                printf ("\nIngrese el número de la opción que desea cambiar: ");
+                                                scanf (" %i", &cataasie);
+                                                if (cataasie==1)
+                                                {
+                                                        strcpy(bicicleta[i].asiento,"estándar");
+                                                }
+                                                if (cataasie==2)
+                                                {
+                                                        strcpy(bicicleta[i].luces,"deportivo");
+                                                        bicicleta[i].peso = bicicleta[i].peso - 100;
+                                                        bicicleta[i].costo = bicicleta[i].costo + 270;
+                                                }
+                                        }//asiento
+                                        if (opcion==5)//rack
+                                        {
+                                                system ("clear");
+                                                repetir=1;
+                                                modif=1;
+                                                rack=1;
+                                                if (rack==1)
+                                                {
+                                                        if (catarack==2)
+                                                        {
+                                                                bicicleta[i].peso= bicicleta[i].peso - 500;
+                                                                bicicleta[i].costo= bicicleta[i].costo - 270;
+                                                        }
+                                                }
+                                                printf ("\nVENTA DE BICICLETAS\n");
+                                                printf ("\nCONFIGURACIÓN DE BICICLETA\n");
+                                                printf ("\nCONFIGURAR RACK TRACERO\n");
+                                                printf ("\nCATÁLOGO\n");
+                                                printf ("\nRACK		PESO		PRECIO\n");
+                                                printf ("\n1.Sin rack	0		0");
+                                                printf ("\n2.Rack		+500grms	+$270\n");
+                                                printf ("\nIngrese el número de la opción que desea cambiar: ");
+                                                scanf (" %i", &catarack);
+                                                if (catarack==1)
+                                                {
+                                                        strcpy(bicicleta[i].rack,"sin rack");
+                                                }
+                                                if (catarack==2)
+                                                {
+                                                        strcpy(bicicleta[i].rack,"rack");
+                                                        bicicleta[i].peso = bicicleta[i].peso + 500;
+                                                        bicicleta[i].costo = bicicleta[i].costo + 270;
+                                                }
+                                        }//rack
+                                        if (opcion==6)//llantas
+                                        {
+                                                system ("clear");
+                                                repetir=1;
+                                                modif=1;
+                                                llantas=1;
+                                                if (llantas==1)
+                                                {
+                                                        if (catallan==2)
+                                                        {
+                                                                bicicleta[i].peso= bicicleta[i].peso + 200;
+                                                                bicicleta[i].costo= bicicleta[i].costo - 270 ;
+                                                        }
+                                                        if (catallan==3)
+                                                        {
+                                                                bicicleta[i].peso= bicicleta[i].peso + 180;
+                                                                bicicleta[i].costo= bicicleta[i].costo + 315;
+                                                        }
+                                                }
+                                                printf ("\nVENTA DE BICICLETAS\n");
+                                                printf ("\nCONFIGURACIÓN DE BICICLETA\n");
+                                                printf ("\nCONFIGURAR LLANTAS\n");
+                                                printf ("\nCATÁLOGO\n");
+                                                printf ("\nLLANTAS		PESO		PRECIO\n");
+                                                printf ("\n1.Estándar	0		0");
+                                                printf ("\n2.Deportivas	-200grms	+$270");
+                                                printf ("\n3.Kevlar	+180grms	+$315\n");
+                                                printf ("\nIngrese el número de la opción que desea cambiar: ");
+                                                scanf (" %i", &catallan);
+                                                if (catallan==1)
+                                                {
+                                                        strcpy(bicicleta[i].llantas,"estándar");
+                                                }
+                                                if (catallan==2)
+                                                {
+                                                        strcpy(bicicleta[i].luces,"deportivas");
+                                                        bicicleta[i].peso = bicicleta[i].peso - 200;
+                                                        bicicleta[i].costo = bicicleta[i].costo + 270;
+                                                }
+                                                if (catallan==3)
+                                                {
+                                                        strcpy(bicicleta[1].manubrio,"kevlar");
+                                                        bicicleta[i].peso = bicicleta[i].peso + 180;
+                                                        bicicleta[i].costo = bicicleta[i].costo + 315;
+                                                }
+                                        }//llantas
+                                        if (opcion==7)//velocidades
+                                        {
+                                                system ("clear");
+                                                repetir=1;
+                                                modif=1;
+                                                velocidad=1;
+                                                if (velocidad==1)
+                                                {
+                                                        if (catavel==2)
+                                                        {
+                                                                bicicleta[i].peso= bicicleta[i].peso - 750;
+                                                                bicicleta[i].costo= bicicleta[i].costo - 190;
+                                                        }
+                                                        if (catavel==3)
+                                                        {
+                                                                bicicleta[i].peso= bicicleta[i].peso - 980;
+                                                                bicicleta[i].costo= bicicleta[i].costo - 300;
+                                                        }
+							if (catavel==4)
+                                                        {
+                                                                bicicleta[i].peso= bicicleta[i].peso - 1100;
+                                                                bicicleta[i].costo= bicicleta[i].costo - 350;
+                                                        }
+                                                }
+                                                printf ("\nVENTA DE BICICLETAS\n");
+                                                printf ("\nCONFIGURACIÓN DE BICICLETA\n");
+                                                printf ("\nCONFIGURAR VELOCIDADES\n");
+                                                printf ("\nCATÁLOGO\n");
+                                                printf ("\nVELOCIDADES	PESO		PRECIO\n");
+                                                printf ("\n1. 1		0		0");
+                                                printf ("\n2. 3		+750grms	+$190");
+                                                printf ("\n3. 6		+980grms	+$300");
+						printf ("\n4. 8		+1,100grms	+$350\n");
+                                                printf ("\nIngrese el número de la opción que desea cambiar: ");
+                                                scanf (" %i", &catavel);
+                                                if (catavel==1)
+                                                {
+							bicicleta[i].velocidad= 1;
+                                                }
+                                                if (catavel==2)
+                                                {
+							bicicleta[i].velocidad= 3;
+                                                        bicicleta[i].peso = bicicleta[i].peso + 750;
+                                                        bicicleta[i].costo = bicicleta[i].costo + 190;
+                                                }
+                                                if (catavel==3)
+                                                {
+							bicicleta[i].velocidad= 6;
+                                                        bicicleta[i].peso = bicicleta[i].peso + 980;
+                                                        bicicleta[i].costo = bicicleta[i].costo + 300;
+                                                }
+						if (catavel==4)
+                                                {
+                                                        bicicleta[i].velocidad= 8;
+                                                        bicicleta[i].peso = bicicleta[i].peso + 1100;
+                                                        bicicleta[i].costo = bicicleta[i].costo + 350;
+                                                }
+                                        }//velocidades
+                                        if (opcion==8)//color
+                                        {
+                                                system ("clear");
+                                                repetir=1;
+                                                modif=1;
+                                                color=1;
+                                                if (color==1)
+                                                {
+                                                        if (catacol==2)
+                                                        {
+                                                                bicicleta[i].costo= bicicleta[i].costo - 65;
+                                                        }
+                                                        if (catacol==3)
+                                                        {
+                                                                bicicleta[i].costo= bicicleta[i].costo - 55;
+                                                        }
+							if (catacol==4)
+                                                        {
+                                                                bicicleta[i].costo= bicicleta[i].costo - 55;
+                                                        }
+                                                        if (catacol==5)
+                                                        {
+                                                                bicicleta[i].costo= bicicleta[i].costo - 190;
+                                                        }
+                                                        if (catacol==6)
+                                                        {
+                                                                bicicleta[i].costo= bicicleta[i].costo - 70;
+                                                        }
+                                                        if (catacol==7)
+                                                        {
+                                                                bicicleta[i].costo= bicicleta[i].costo - 90;
+                                                        }
+                                                }
+                                                printf ("\nVENTA DE BICICLETAS\n");
+                                                printf ("\nCONFIGURACIÓN DE BICICLETA\n");
+                                                printf ("\nCONFIGURAR COLOR\n");
+                                                printf ("\nCATÁLOGO\n");
+                                                printf ("\nCOLOR		PESO	PRECIO\n");
+                                                printf ("\n1.Blanco	0	0");
+                                                printf ("\n2.Rojo		0	+$65");
+						printf ("\n3.Verde		0	+$55");
+                                                printf ("\n4.Azul		0	+$55");
+                                                printf ("\n5.Plateado	0	+$190");
+                                                printf ("\n6.Negro		0	+$70");
+                                                printf ("\n7.Rosa		0	+$90\n");
+                                                printf ("\nIngrese el número de la opción que desea cambiar: ");
+                                                scanf (" %i", &catacol);
+                                                if (catacol==1)
+                                                {
+                                                        strcpy(bicicleta[i].color,"blanco");
+                                                }
+                                                if (catacol==2)
+                                                {
+                                                        strcpy(bicicleta[i].color,"rojo");
+                                                        bicicleta[i].costo = bicicleta[i].costo + 65;
+                                                }
+                                                if (catacol==3)
+                                                {
+                                                        strcpy(bicicleta[i].color,"verde");
+                                                        bicicleta[i].costo = bicicleta[i].costo + 55;
+                                                }
+                                                if (catacol==4)
+                                                {
+                                                        strcpy(bicicleta[i].color,"azul");
+                                                        bicicleta[i].costo = bicicleta[i].costo + 55;
+                                                }
+                                                if (catacol==5)
+                                                {
+                                                        strcpy(bicicleta[i].color,"plateado");
+                                                        bicicleta[i].costo = bicicleta[i].costo + 190;
+                                                }
+                                                if (catacol==6)
+                                                {
+                                                        strcpy(bicicleta[i].color,"negro");
+                                                        bicicleta[i].costo = bicicleta[i].costo + 70;
+                                                }
+                                                if (catacol==7)
+                                                {
+                                                        strcpy(bicicleta[i].color,"rosa");
+                                                        bicicleta[i].costo = bicicleta[i].costo + 90;
+                                                }
+                                        }//color
+				}
+			}
+			while (repetir==1);
+		}
+	}
+	return *confirmar;
+}
+
+/*
+* @brief: Esta función permite guardar los datos de la venta del usuario,(configuración de la bicicleta)
+* @authors: Gabriel Coronado/Segio Esquivel/ Sebastian Alanis.
+* @date 31/11/21
+* @param bicicleta [] es un struct que almacena las los datos de la bicicleta del usuario.
+* @param nomArch[] es la variable que hace referencia al archivo de texto en que se guardaran los datos.
+* @param *confirmar  es un acomulador que almacena la confirmacion de la compra.
+* @param x es un acomulador que se va sumando cada vez que ingresa un nuevo usuario.
+* @param usuario[]  es un struct que almacena las los datos del usuario.
+* @return *final es un apuntador que se va acomulando cada vez que una venta es registrada.
+*/
+
+extern int guardarVentas(struct bike bicicleta[], char nomArch[], int *confirmar, int x, struct user usuario[], int *final)
+{
+        int i;
+        FILE *fp;
+        fp=fopen(nomArch, "a");
+        if (fp == NULL)
+        {
+                printf ("\nArchivo no disponible.\n");
+                exit(1);
+        }
+	if (*confirmar==1)
+	{
+		*final=1;
+		for (i=x; i<(x+1); i++)
+		{
+			fprintf (fp, "\nVENTA %i\n", (i-1));
+			fprintf (fp, "\nUSUARIO:");
+			fprintf (fp, "\nNombre: %s %s %s", usuario[i].nombre.nombres, usuario[i].nombre.apellidop, usuario[i].nombre.apellidom);
+			fprintf (fp, "\nCorreo eletrónico: %s\n", usuario[i].correo);
+			fprintf (fp, "\nDETALLES:");
+			fprintf (fp, "\nCosto: $%.0f	Peso: %.3fkgms", bicicleta[i].costo, (bicicleta[i].peso/1000));
+	                fprintf (fp, "\n1.Manubrio: %s", bicicleta[i].manubrio);
+        	        fprintf (fp, "\n2.Luces: %s", bicicleta[i].luces);
+	                fprintf (fp, "\n3.Cuadro: %s", bicicleta[i].cuadro);
+       		        fprintf (fp, "\n4.Asiento: %s", bicicleta[i].asiento);
+	                fprintf (fp, "\n5.%s", bicicleta[i].rack);
+	                fprintf (fp, "\n6.Llantas: %s", bicicleta[i].llantas);
+	                fprintf (fp, "\n7.%i velocidades", bicicleta[i].velocidad);
+	                fprintf (fp, "\n8.Color: %s\n", bicicleta[i].color);
+		}
+	}
+        return *final;
+}
+
+/*
+* @brief: Esta función imprime en pantalla los detalles de la venta.
+* @authors: Gabriel Coronado/Segio Esquivel/ Sebastian Alanis.
+* @date 31/11/21
+* @param bicicleta[] es un struct que almacena las los datos de la bicicleta del usuario.
+* @param x es un acomulador que se va sumando cada vez que ingresa un nuevo usuario.
+* @param usuario[] es un struct que almacena las los datos del usuario.
+* @return void
+*/
+
+extern void ventaFinal(struct user usuario[], struct bike bicicleta[], int x)
+{
+	int i;
+	char salir;
+	for (i=x; i<(x+1); i++)
+	{
+		system ("clear");
+                printf ("\nVENTA DE BICICLETAS\n");
+                printf ("\nDETALLES DE COMPRA\n");
+		printf ("\nUSUARIO:");
+                printf ("\nNombre: %s %s %s", usuario[i].nombre.nombres, usuario[i].nombre.apellidop, usuario[i].nombre.apellidom);
+                printf ("\nCorreo eletrónico: %s\n", usuario[i].correo);
+                printf ("\nDETALLES:");
+                printf ("\nCosto: $%.0f    Peso: %.3fkgms", bicicleta[i].costo, (bicicleta[i].peso/1000));
+                printf ("\n1.Manubrio: %s", bicicleta[i].manubrio);
+                printf ("\n2.Luces: %s", bicicleta[i].luces);
+                printf ("\n3.Cuadro: %s", bicicleta[i].cuadro);
+                printf ("\n4.Asiento: %s", bicicleta[i].asiento);
+                printf ("\n5.%s", bicicleta[i].rack);
+                printf ("\n6.Llantas: %s", bicicleta[i].llantas);
+                printf ("\n7.%i velocidades", bicicleta[i].velocidad);
+               	printf ("\n8.Color: %s\n", bicicleta[i].color);
+		printf ("\nTECLE CUALQUIER COSA Y PRESIONE ENTER PARA SALIR\n");
+		scanf (" %c", &salir);
+	}
+	return;
+}

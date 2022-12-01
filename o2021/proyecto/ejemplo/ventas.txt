@@ -1,0 +1,13 @@
+REPORTE DE VENTAS
+
+VENTA 1
+Detalles:
+Costo: $900	Peso: 11.000kgms
+1.Manubrio: ÚU
+2.Luces: 
+3.Cuadro: 
+4.Asiento: ÿ
+5.ÿ
+6.Llantas: ÿ
+7.32767 velocidades
+8.Color: ÃoJIÿ
