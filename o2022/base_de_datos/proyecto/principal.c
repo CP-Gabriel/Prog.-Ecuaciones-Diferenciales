@@ -3,17 +3,14 @@
 #include <string.h>
 #include <stdlib.h>
 
-//Hello World
-
 extern void menuAdministrador();
-extern void menuSolicitante(int cuenta);
+extern void menuSolicitante(int id);
 
 int main(int argc, char **argv)
 {
-	char contrasena[200], query[1024], tipoUsuario[1];
-	int cuenta;
+	char cuenta[100], contrasena[200], query[1024], tipoUsuario[1];
 	int filtro = 0, error = 0;
-	int i, num_fields;
+	int id, i, num_fields;
 
 	char *server = "localhost";
 	char *user = "ic21gcp";
@@ -52,41 +49,23 @@ int main(int argc, char **argv)
 		printf ("\nInicio de Cesion\n\n");
 		if (error == 1)
 		{
-			printf ("\n\tUsuario o contraseña incorrectos\n\tPor favor ingresalas nuevamente.\t\n");
+			printf ("\tUsuario o contraseña incorrectos\n\tPor favor ingresalas nuevamente.\t\n");
+			error = 0;
 		}
 		printf ("\nIngresa tu cuenta: ");
-		scanf (" %i", &cuenta);
+		scanf (" %[^\n]", cuenta);
 
 		printf ("\nIngresa tu contraseña: ");
 		scanf (" %[^\n]", contrasena);
 
-//		printf ("\nCUENTA : %s\n", cuenta);
-//		printf ("\nCONTRASEÑA: %s\n", contrasena);
-
-		sprintf (query, "SELECT pro_IniciarSesion(%i, '%s')", cuenta, contrasena);
-
-/*		strcat(query, "SELECT pro_IniciarSesion(");
-		strcat(query, cuenta);
-//		printf ("\nQUERY: %s\n", query);
-		strcat(query, ", ");
-//		printf ("\nQUERY: %s\n", query);
-		strcat(query, contrasena);
-//		printf ("\nQUERY: %s\n", query);
-		strcat(query, ")");*/
-
-//		printf ("\nQUERY : %s\n", query);
+		sprintf (query, "SELECT pro_IniciarSesion(%s, '%s')", cuenta, contrasena);
 
 		if (mysql_query(&mysql, query))
 	        {
-//			printf ("\nERROR");
 			error = 1;
-			filtro = 0;
-			strcpy(query, "");
         	}
-
 		else
 		{
-//			printf ("\nEXITO");
 			filtro = 1;
 
 			if (! (res = mysql_store_result(&mysql)))
@@ -106,15 +85,23 @@ int main(int argc, char **argv)
 
 			if (strcmp(tipoUsuario, "A") == 0)
 			{
-				//printf ("\nADMINISTRADOR");
 				menuAdministrador();
 				filtro = 0;
 			}
 			if (strcmp(tipoUsuario, "S") == 0)
 			{
-				menuSolicitante(cuenta);
-				//printf ("\nSOLICITANTE");
+				id = (int) strtol(cuenta, NULL, 10);
+				printf ("\nID : %i", id);
+				printf ("\nID : %s", cuenta);
+				scanf ("%i", &id);
+				menuSolicitante(id);
 				filtro = 0;
+			}
+			else
+			{
+				error = 1;
+				filtro = 0;
+				strcpy(query, "");
 			}
 		}
 	}

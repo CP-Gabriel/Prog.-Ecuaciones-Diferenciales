@@ -51,7 +51,7 @@ void ejercutarSQL(char query[])
                 {
                         if(row[i] != NULL)
                         {
-                                printf("%s|",row[i]);
+                                printf("%s",row[i]);
                         }
                         else
                         {
@@ -68,10 +68,17 @@ void ejercutarSQL(char query[])
 
 int registrarUsuarios()
 {
-        char nombre[20] = " ", apellido[30] = " ", carrera[200] = " ", cumple[20] = " ", correo[100] = " ", contrasena[100] = "";
-	char tipoUsuario;
-        int semestre;
+        char nombre[20]="", apellido[30]="", carrera[200]="", cumple[20]="", correo[100]="", contrasena[100]="", tipoUsuario[50]="", semestre[50]="", cuenta[100];
+        int semester, i, num_fields;
 	char query[1024] = "";
+	char *db = "ic21gcp";
+
+	MYSQL mysql;
+        MYSQL_RES *res;
+        MYSQL_ROW row;
+        MYSQL_FIELD *fields;
+
+	mysql_init(&mysql);
 
         system ("clear");
         printf ("\n\t\tBibiblioteca ibero\n\n");
@@ -90,7 +97,8 @@ int registrarUsuarios()
         scanf (" %[^\n]", cumple);
 
         printf ("\nIngresa el numero del semestre: ");
-        scanf ("%i", &semestre);
+        scanf (" %[^\n]", semestre);
+	semester = (int) strtol(semestre, NULL, 10);
 
         printf ("\nIngresa el correo: ");
         scanf (" %[^\n]", correo);
@@ -99,13 +107,32 @@ int registrarUsuarios()
         scanf (" %[^\n]", contrasena);
 
         printf ("\nA: Administrador\tS: Solicitante \nIngresa la letra del tipo de Usuario: ");
-        scanf (" %c", &tipoUsuario);
+        scanf (" %[^\n]", tipoUsuario);
 
-        sprintf(query, "CALL pro_InsertarUsuario('%s', '%s', '%s', '%s', %i, '%s', '%s', '%c')", nombre, apellido, carrera, cumple, semestre, correo, contrasena, tipoUsuario);
+        sprintf(query, "CALL pro_InsertarUsuario('%s', '%s', '%s', '%s', %i, '%s', '%s', '%s')", nombre, apellido, carrera, cumple, semester, correo, contrasena, tipoUsuario);
+//        printf ("\nQUERY : %s\n", query);
 
-        printf ("\nQUERY : %s\n", query);
-        ejercutarSQL(query);
-        scanf (" %c", &tipoUsuario);
+	mysql_real_connect(&mysql, "localhost", "ic21gcp", "223071", "ic21gcp", 0, NULL, 0);
+	mysql_select_db(&mysql, db);
+	mysql_query(&mysql, query);
+	res = mysql_store_result(&mysql);
+
+	while ((row = mysql_fetch_row(res)))
+        {
+                for(i=0; i<mysql_num_fields(res); i++)
+                {
+                        if(row[i] != NULL)
+                        {
+				strcpy(cuenta, row[i]);
+                        }
+                }
+        }
+
+	printf ("\nCUENTA: %s", cuenta);
+	system("read -p 'Presiona enter para continuar' var");
+	mysql_free_result(res);
+        mysql_close(&mysql);
+//        ejercutarSQL(query);
 	return 0;
 }
 
@@ -162,37 +189,53 @@ void buscarUsuarios()
 
 void menuAdministrador()
 {
-	int temp = 0;
-	int opcion;
+	char opcion[255];
+	int temp = 0, error = 0;
+	int menu;
 
 	do
 	{
                 system ("clear");
                 printf ("\n\t\tBibiblioteca ibero\n\n");
                 printf ("\nCesion Administrador\n\n");
+		if (error == 1)
+                {
+                        printf ("\tDatos mal ingresados, por favor ingresa el un numero del menu.\t\n");
+                        error = 0;
+                }
+
                 printf ("\nMenu:");
 		printf ("\n1. Registrar Usuarios.");
 		printf ("\n2. Modificar Registros de Usuarios.");
 		printf ("\n3. Buscar Usuarios.");
 		printf ("\n4. Cerrar Cesion.\n");
 		printf ("\nIngresa el numero de la opcion que deseas realizar: ");
-		scanf ("%i", &opcion);
+		scanf (" %[^\n]", opcion);
+		menu = (int) strtol(opcion, NULL, 10);
+/*		printf ("\nMENU: %i", menu);
+		scanf (" %[^\n]", opcion);*/
 
-		if (opcion == 1)
+		if (menu == 1)
 		{
 			registrarUsuarios();
 			temp = 1;
 		}
-		else if (opcion == 2)
+		else if (menu == 2)
                 {
 			modificarRegistro();
 			temp = 1;
                 }
-		else if (opcion == 3)
+		else if (menu == 3)
                 {
 			buscarUsuarios();
 			temp = 1;
                 }
+		else
+		{
+			error = 1;
+			temp = 1;
+		}
+
 	}
 	while (temp == 1);
 
